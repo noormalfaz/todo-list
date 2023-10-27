@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 
 function ListTodo() {
   return (
-    <div className="flex gap-10 p-5 items-center">
+    <div className="flex gap-10 m-5 p-5 items-center">
       <NavLink
         to="/"
         className={({ isActive }) =>
