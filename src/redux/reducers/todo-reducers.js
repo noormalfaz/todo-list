@@ -1,5 +1,5 @@
 const initialState = {
-  todos: [{ id: "", value: "", status: false }],
+  todos: [{ id: 1, value: "Data Todo", status: false }],
 };
 
 function todoReducer(state = initialState, action) {
@@ -14,12 +14,25 @@ function todoReducer(state = initialState, action) {
       return {
         todos: cloneTodos,
       };
-      case "DELETE_TODO":
-        const filterTodo = state.todos.filter(
-            (item) => item.id != action.payload
-        )
+    case "DELETE_TODO":
+      const filterTodo = state.todos.filter(
+        (item) => item.id != action.payload
+      );
+      return {
+        todos: filterTodo,
+      };
+      case "EDIT_TODO":
+        const editedTodo = state.todos.map((todo) => {
+          if (todo.id === action.payload.id) {
+            return {
+              ...todo,
+              value: action.payload.value
+            }
+          }
+          return todo
+        })
         return {
-            todos: filterTodo,
+          todos: editedTodo
         }
     default:
       return state;
@@ -34,10 +47,17 @@ export function addTodo(input) {
 }
 
 export function deleteTodo(id) {
-    return {
-        type: "DELETE_TODO",
-        payload: id,
-    }
+  return {
+    type: "DELETE_TODO",
+    payload: id,
+  };
+}
+
+export function editTodo(id, value) {
+  return {
+    type: "EDIT_TODO",
+    payload: {id, value},
+  };
 }
 
 export default todoReducer;

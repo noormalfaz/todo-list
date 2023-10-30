@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import InputTodo from "./components/InputTodo";
-import ActiveTodo from "./pages/ActiveTodo";
-import AllTodo from "./pages/AllTodo";
-import CompleteTodo from "./pages/CompleteTodo";
+// import ActiveTodo from "./pages/ActiveTodo";
+// import AllTodo from "./pages/AllTodo";
+// import CompleteTodo from "./pages/CompleteTodo";
 import ListTodo from "./components/ListTodo";
 
 function App() {
@@ -14,11 +14,11 @@ function App() {
         <ListTodo />
       </section>
 
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<AllTodo />} />
         <Route path="/active" element={<ActiveTodo />} />
         <Route path="/complete" element={<CompleteTodo />} />
-      </Routes>
+      </Routes> */}
     </>
   );
 }
