@@ -26,39 +26,45 @@ function ListTodo() {
   };
 
   return (
-    <div className="justify-center items-center flex flex-col gap-5 m-7">
+    <div className="justify-center items-center flex flex-col m-7 gap-5">
       {todos.map((todo) => (
-        <div key={todo.id} className="flex justify-between border w-80 p-2.5">
-          <span
-            onClick={() => handleToggleStatus(todo.id)}
-            className={checkedTodos[todo.id] ? "line-through" : ""}
-          >
-            <input
-              type="checkbox"
-              checked={checkedTodos[todo.id]}
-              onChange={() => handleToggleStatus(todo.id)}
-              className="mr-2"
-            />
-            {todo.id === editedTodo.id ? (
-              <input
-                type="text"
-                value={editedTodo.value}
-                onChange={(event) =>
-                  setEditedTodo({
-                    id: editedTodo.id,
-                    value: event.target.value,
-                  })
-                }
-              />
-            ) : (
-              todo.value
-            )}
-          </span>
+        <div
+          key={todo.id}
+          className="w-[100%] flex justify-between p-2.5 border border-sky-500 rounded-[12px] max-[290px]:flex-col max-[290px]:items-center"
+        >
           <div>
+            <span
+              onClick={() => handleToggleStatus(todo.id)}
+              className={checkedTodos[todo.id] ? "line-through" : ""}
+            >
+              <input
+                type="checkbox"
+                checked={checkedTodos[todo.id]}
+                onChange={() => handleToggleStatus(todo.id)}
+                className="mr-2"
+              />
+              {todo.id === editedTodo.id ? (
+                <input
+                  type="text"
+                  value={editedTodo.value}
+                  onChange={(event) =>
+                    setEditedTodo({
+                      id: editedTodo.id,
+                      value: event.target.value,
+                    })
+                  }
+                  className="max-[290px]:w-[100%]"
+                />
+              ) : (
+                todo.value
+              )}
+            </span>
+          </div>
+          <div className="pl-20 max-[380px]:pl-0">
             {todo.id === editedTodo.id ? (
               <button
                 onClick={handleEdit}
-                className="mr-2 font-semibold text-teal-600"
+                className="pr-2 font-semibold text-sky-800"
               >
                 Simpan
               </button>
@@ -67,7 +73,7 @@ function ListTodo() {
                 onClick={() =>
                   setEditedTodo({ id: todo.id, value: todo.value })
                 }
-                className="mr-2"
+                className="pr-2"
               >
                 ✏️
               </button>
@@ -81,45 +87,3 @@ function ListTodo() {
 }
 
 export default ListTodo;
-
-
-// import { Link, NavLink } from "react-router-dom";
-
-// function ListTodo() {
-//   return (
-//     <div className="flex gap-10 m-5 p-5 items-center">
-//       <NavLink
-//         to="/"
-//         className={({ isActive }) =>
-//           isActive
-//             ? "bg-teal-500 text-white font-semibold px-3 pb-0.5 rounded-full"
-//             : "bg-slate-500 text-white font-semibold px-3 pb-0.5 rounded-full"
-//         }
-//       >
-//         All
-//       </NavLink>
-//       <NavLink
-//         to="/active"
-//         className={({ isActive }) =>
-//           isActive
-//             ? "bg-teal-500 text-white font-semibold px-3 pb-0.5 rounded-full"
-//             : "bg-slate-500 text-white font-semibold px-3 pb-0.5 rounded-full"
-//         }
-//       >
-//         Active
-//       </NavLink>
-//       <NavLink
-//         to="/complete"
-//         className={({ isActive }) =>
-//           isActive
-//             ? "bg-teal-500 text-white font-semibold px-3 pb-0.5 rounded-full"
-//             : "bg-slate-500 text-white font-semibold px-3 pb-0.5 rounded-full"
-//         }
-//       >
-//         Complete
-//       </NavLink>
-//     </div>
-//   );
-// }
-
-// export default ListTodo;
